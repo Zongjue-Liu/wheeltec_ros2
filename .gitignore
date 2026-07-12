@@ -1,0 +1,34 @@
+# ROS 2 / colcon outputs
+build/
+install/
+log/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Editor and backup files
+*.bak
+*.orig
+*.rej
+*~
+.vscode/
+.idea/
+
+# Runtime output
+*.db3
+*.mcap
+*.log
+rosbag2_*/
+autostart_logs/
+mapping_sessions/
+
+# Training and inference output
+runs/
+datasets/
+training/
+
+# OS metadata
+.DS_Store
+Thumbs.db

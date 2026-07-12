@@ -1,0 +1,11 @@
+route:
+  frame_id: map
+  loop: false
+  max_retries: 1
+  waypoint_delay_sec: 1.0
+
+# These conservative points are placeholders until the map is checked in RViz.
+# Route execution is disabled by default in clean_navigation.launch.py.
+waypoints:
+  - {x: 0.50, y: 0.00, yaw: 0.00}
+  - {x: 0.00, y: 0.00, yaw: 3.14159}

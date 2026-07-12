@@ -1,0 +1,22 @@
+[Unit]
+Description=Wheeltec Robot Perception Service (YOLOv8/TensorRT)
+After=network-online.target wheeltec-frontend.service
+Wants=network-online.target
+Requires=wheeltec-frontend.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=wheeltec
+Group=wheeltec
+WorkingDirectory=/home/wheeltec
+ExecStartPre=/bin/sleep 5
+ExecStart=/bin/bash /home/wheeltec/wheeltec_perception_service.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Environment=HOME=/home/wheeltec
+
+[Install]
+WantedBy=multi-user.target

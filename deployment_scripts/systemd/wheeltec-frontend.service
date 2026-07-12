@@ -1,0 +1,22 @@
+[Unit]
+Description=Wheeltec Robot Frontend Service (rosbridge + base + video)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=wheeltec
+Group=wheeltec
+WorkingDirectory=/home/wheeltec
+ExecStartPre=/bin/sleep 10
+ExecStart=/bin/bash /home/wheeltec/wheeltec_frontend_service.sh
+ExecStop=/bin/bash -c 'source /opt/ros/humble/setup.bash && pkill -f ros2 || true'
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment=HOME=/home/wheeltec
+
+[Install]
+WantedBy=multi-user.target
