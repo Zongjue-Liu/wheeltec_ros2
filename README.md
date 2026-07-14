@@ -155,7 +155,7 @@ source install/setup.bash
 
 本仓库不是完整原厂工作区。如果在其他电脑构建，需要另外安装或提供 Astra、LiDAR、Nav2、Rosbridge、Web Video Server、底盘描述包等依赖。
 
-`colcon build` 会重新生成 `build/`、`install/` 和 `log/`。这些目录不属于源码，不应提交到 Git；具体说明见 [`DEPENDENCIES.md`](DEPENDENCIES.md)。
+`colcon build` 会生成 `build/`、`install/` 和 `log/`。这些目录不属于源码，不应提交到 Git；但当前比赛小车使用 `--symlink-install`，部署机器上的 `build/` 仍可能被 `install/` 引用，不能在未准备重建时直接删除。具体说明见 [`DEPENDENCIES.md`](DEPENDENCIES.md)。
 
 ## 部署脚本
 

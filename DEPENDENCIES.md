@@ -87,7 +87,14 @@ source install/setup.bash
 | `install/` | 可被 ROS 2 加载的安装结果 | 否 |
 | `log/` | 本次及历史构建日志 | 否 |
 
-删除这些目录不会删除源代码。删除 `build/` 和 `log/` 后可以直接重新构建；删除正在使用的 `install/` 后，必须成功执行一次 `colcon build` 才能再次启动对应节点。
+这些目录不提交 Git，但不能据此判断部署中的小车可以直接删除它们。当前比赛小车使用 `colcon build --symlink-install`，`install/` 中的部分程序、环境脚本和资源实际链接到 `build/`；删除车端 `build/` 会使这些链接失效，相关节点在重启后无法运行。
+
+- Git 仓库：继续通过 `.gitignore` 排除 `build/`、`install/` 和 `log/`。
+- 已部署小车：保留 `build/` 和 `install/`，除非已经准备立即完整重建所需依赖。
+- `log/`：可以删除，不影响运行。
+- 若误删 `build/`：使用与原环境一致的 `--symlink-install` 参数重建项目及其依赖后再测试。
+
+删除这些目录不会删除 `src/` 源代码，但删除 `build/` 或 `install/` 可能破坏当前可运行环境。
 
 ## 提交范围
 
