@@ -4,6 +4,8 @@
 
 仓库只保留比赛功能相关源码，不包含完整原厂工作区、编译产物、运行日志、训练数据和调试备份。运行时仍依赖小车已有的 WHEELTEC ROS 2 Humble 环境及原厂传感器驱动。
 
+完整的原厂、第三方和系统依赖边界见 [`DEPENDENCIES.md`](DEPENDENCIES.md)。
+
 ## 功能概览
 
 - Astra RGB 与深度图像采集
@@ -152,6 +154,8 @@ source install/setup.bash
 ```
 
 本仓库不是完整原厂工作区。如果在其他电脑构建，需要另外安装或提供 Astra、LiDAR、Nav2、Rosbridge、Web Video Server、底盘描述包等依赖。
+
+`colcon build` 会重新生成 `build/`、`install/` 和 `log/`。这些目录不属于源码，不应提交到 Git；具体说明见 [`DEPENDENCIES.md`](DEPENDENCIES.md)。
 
 ## 部署脚本
 
